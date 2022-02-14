@@ -22,4 +22,15 @@ class Car extends Vehicle {
   }
 }
 
+interface TestInterface {
+  showInfo(): string;
+}
+
+class TestClass implements TestInterface {
+  constructor(public name: string, public age: number) {}
+  showInfo(): string {
+    return `Name : ${this.name}  Age : ${this.age}`;
+  }
+}
+
 const vehicle = new Vehicle('Red');

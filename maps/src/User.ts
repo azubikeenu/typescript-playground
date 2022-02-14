@@ -1,6 +1,7 @@
 import faker from '@faker-js/faker';
+import { Mappable } from './CustomMap';
 
-export class User {
+export class User implements Mappable {
   name: string;
   location: { latitude: number; longitude: number };
   constructor() {
@@ -9,5 +10,9 @@ export class User {
       latitude: parseFloat(faker.address.latitude()),
       longitude: parseFloat(faker.address.longitude()),
     };
+  }
+
+  markerContent(): string {
+    return `username is ${this.name}`;
   }
 }

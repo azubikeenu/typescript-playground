@@ -1,11 +1,9 @@
-import { User } from './User';
-import { Company } from './Company';
-
-interface Mappable {
+export interface Mappable {
   location: {
     latitude: number;
     longitude: number;
   };
+  markerContent(): string;
 }
 
 export class CustomMap {
@@ -17,12 +15,19 @@ export class CustomMap {
     });
   }
   addMarker(resource: Mappable): CustomMap {
-    new google.maps.Marker({
+    const marker = new google.maps.Marker({
       map: this.googleMap,
       position: {
         lat: resource.location.latitude,
         lng: resource.location.longitude,
       },
+    });
+
+    marker.addListener('click', () => {
+      const InfoWindow = new google.maps.InfoWindow({
+        content: resource.markerContent(),
+      });
+      InfoWindow.open(this.googleMap, marker);
     });
     return this;
   }
