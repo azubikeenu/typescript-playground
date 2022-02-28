@@ -1,10 +1,13 @@
 import { Sortable } from './Sortable';
+import { Sorter } from './Sorter';
 
-export class NumberCollection implements Sortable {
+export class NumberCollection extends Sorter implements Sortable {
   get length(): number {
     return this.data.length;
   }
-  constructor(public data: number[]) {}
+  constructor(public data: number[]) {
+    super();
+  }
   swap(i: number, j: number): void {
     const temp = this.data[i];
     this.data[i] = this.data[j];

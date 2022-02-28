@@ -1,27 +1,34 @@
 import { Sortable } from './Sortable';
+import { Sorter } from './Sorter';
 
 class Node {
   next: Node | null = null;
   constructor(public data: number) {}
 }
 
-export class LinkedList implements Sortable {
+export class LinkedList extends Sorter {
   head: Node | null = null;
 
   add(data: number): void {
     const node = new Node(data);
+    // if there is no head add the new node as the head
     if (!this.head) {
       this.head = node;
       return;
     }
+    //let the last node === the first node
     let tail = this.head;
+    // while another node exist
     while (tail.next) {
+      // move the tail to the last node
       tail = tail.next;
     }
+    // when we reach the end of the list , assign the new node to the last node
     tail.next = node;
   }
 
   get length(): number {
+    // if there is no head ,then the length is 0
     if (!this.head) return 0;
     let length = 1;
     let node = this.head;

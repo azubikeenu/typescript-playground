@@ -11,20 +11,14 @@ linkedList.add(-5);
 linkedList.add(0);
 linkedList.add(10);
 
-let sorter = new Sorter(numbersCollection);
+numbersCollection.sort();
 
-sorter.sort();
+console.log(numbersCollection.data);
 
-console.log(sorter.collection);
+characterCollection.sort();
 
-sorter = new Sorter(characterCollection);
+console.log(characterCollection.data);
 
-sorter.sort();
-
-console.log(sorter.collection);
-
-sorter = new Sorter(linkedList);
-
-sorter.sort();
+linkedList.sort();
 
 linkedList.print();
