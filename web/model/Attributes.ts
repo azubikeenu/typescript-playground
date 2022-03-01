@@ -1,6 +1,6 @@
-import { UserProps } from './UserProps';
+import { ModelAttributes } from './Model';
 
-export class Attributes<T> {
+export class Attributes<T> implements ModelAttributes<T> {
   constructor(private data: T) {}
 
   get = <K extends keyof T>(key: K): T[K] => {
@@ -10,6 +10,8 @@ export class Attributes<T> {
   set = (updatedData: T): void => {
     Object.assign(this.data, updatedData);
   };
-}
 
-const attr = new Attributes<UserProps>({ id: 1, name: 'Richard' });
+  getAll(): T {
+    return this.data;
+  }
+}

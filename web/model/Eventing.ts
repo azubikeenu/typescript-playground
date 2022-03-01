@@ -1,6 +1,8 @@
-type Callback = () => void;
+import { Events } from './Model';
 
-export class Eventing {
+export type Callback = () => void;
+
+export class Eventing implements Events {
   events: { [key: string]: Callback[] } = {};
 
   on = (eventName: string, callback: Callback): void => {
@@ -8,6 +10,7 @@ export class Eventing {
     handlers.push(callback);
     this.events[eventName] = handlers;
   };
+
   trigger = (eventName: string): void => {
     const handlers = this.events[eventName];
     if (!handlers || handlers.length == 0) {
