@@ -37,7 +37,7 @@ printAnything<string>(['A', 'B', 'C']);
 
 // Genric Constriant
 
-class Car implements Printable {
+class CarM implements Printable {
   print(): void {
     console.log('I am a car');
   }
@@ -55,4 +55,4 @@ function printHousesOrCars<T extends Printable>(array: T[]): void {
   array.forEach((value: T): void => value.print());
 }
 
-printHousesOrCars([new House(), new Car()]);
+printHousesOrCars([new House(), new CarM()]);

@@ -11,8 +11,8 @@ let colors: string[] = ['red', 'green', 'blue'];
 let myNumbers: number[] = [1, 2, 3];
 
 //Classes
-class Car {}
-let car: Car = new Car();
+// class Car {}
+// let car: Car = new Car();
 
 // Object literals
 const obj: { x: number; y: number } = {
