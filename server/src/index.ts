@@ -1,6 +1,8 @@
 import express from 'express';
-import { router as loginRouter } from './routes/login.routes';
 import cookieSession from 'cookie-session';
+import './controller/Login';
+import './controller/Home';
+import { AppRouter } from './AppRouter';
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));
@@ -9,7 +11,8 @@ app.use(
     keys: ['mykey'],
   })
 );
-app.use(loginRouter);
+
+app.use(AppRouter.getInstance());
 
 app.listen(3000, () => {
   console.log('Listening on port 3000');
